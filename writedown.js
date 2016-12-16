@@ -3,5 +3,6 @@ var tarea = document.getElementById('textarea-div');
 
 tarea.addEventListener('input', function (evt) {
     disp.innerHTML = marked(tarea.innerText);
+    renderMathInElement(disp);
 });
 
