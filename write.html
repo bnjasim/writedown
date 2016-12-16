@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css"/>
+  <link rel="stylesheet" type="text/css" href="textarea_style.css"/>
+  <link rel="stylesheet" type="text/css" href="blog_style.css"/>
+  <link rel="stylesheet" type="text/css" href="katex/katex.min.css"/>
+
+  <script type="text/javascript" src="katex/katex.min.js"></script>
+  <script type="text/javascript" src="katex/auto-render.min.js"></script>
+
+  <title>Write Blog in Markdown</title>
+</head>
+
+<body>
+  <div class="navbar navbar-default">
+	<div class="container">	
+		<div class="navbar-header">
+			<a class="navbar-brand" href="kerala.html">
+			  <img alt="Brand" src="gauss.png">
+			  CS_Lab
+			</a>
+			
+		</div>
+		
+
+	</div>
+  </div>
+
+<div class="container">
+<div class="row">
+
+<div class="col-md-10 col-md-push-1 content"> 
+  
+ <!-- <div id="banner">
+   <img src="static/blog/machine-banner.png"> 
+  </div> 
+
+  <div class="content-heading">
+  Markdown Editor
+  </div>  --> 
+
+  <div class="content-body">
+   <div class="row">
+    <div class="col-md-9">
+         
+
+    <!-- Text Area -->
+    <div class="textarea-outer">
+      <!-- Important that first child is icon-group and second child is text-area -->
+      <div class="textarea-icon-group">
+        <div class="btn-group">
+            <button class="btn" type="button" ng-click="runCommand('bold')" title="Bold">
+              <b class="textarea-i-bold">B</b>
+            </button>
+
+            <button class="btn" type="button" ng-click="runCommand('italic')"title="Italic">
+              <i class="textarea-i-italic">I</i>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("underline")' title="Underline">
+              <u class="textarea-i-underline">U</u>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("strikeThrough")' title="Strike">
+              <strike class="textarea-i-strike">a</strike>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("formatBlock")' title="Heading">
+              <span class="textarea-i-h">H</span>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("insertUnorderedList")' title="Unordered-List">
+              <span class="textarea-i-ul fa fa-list-ul"></span>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("insertOrderedList")' title="Ordered-List">
+              <span class="textarea-i-ul fa fa-list-ol"></span>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("code")' title="Code">
+              <span class="textarea-i-code" style="margin-top:-3px;">{ }</span>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("hiliteColor","#FFFBCC")' title="Highlite">
+              <span class="textarea-i-hilite fa fa-eyedropper" style="background-color:#fffbcc;"></span>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("br")' title="Line Break">
+              <span class="textarea-i-br">br</span>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("insertHorizontalRule")' title="Horizontal Rule">
+              <span class="textarea-i-hrule fa fa-arrows-h"></span>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("link")' title="Link">
+              <span class="textarea-i-link fa fa-link"></span>
+            </button>
+
+        </div>
+
+        <div class="btn-group">
+            <button class="btn" type="button" ng-click="runCommand('justifyLeft')" title="Align Left">
+              <span class="textarea-i-align fa fa-align-left"></span>
+            </button>
+
+            <button class="btn" type="button" ng-click="runCommand('justifyCenter')" title="Align Center">
+              <span class="textarea-i-align fa fa-align-center"></span>
+            </button>
+
+            <button class="btn" type="button" ng-click="runCommand('justifyRight')" title="Align Right">
+              <span class="textarea-i-align fa fa-align-right"></span>
+            </button>
+
+        </div>
+                      
+        <div class="btn-group float-right">  
+
+          <button class="btn" type="button" ng-click='insertImage()' title="Image">
+              <div class="textarea-i-image fa fa-image"></div>
+            </button>
+
+            <button class="btn" type="button" ng-click="launchPaint()" title="Paint">
+              <div class="textarea-i-square" style="width:30px;margin-top:-1px">Draw</div>
+            </button>
+
+            <button class="btn" type="button" ng-click='runCommand("icon", "check-square-o")' title="Check">
+              <div class="textarea-i-check-square-o fa fa-check-square-o"></div>
+            </button>
+            
+           
+        </div>
+
+      </div>   
+
+      <div class="clearfix"></div>
+
+      <div id="textarea-div" contenteditable> </div>
+
+      <div id="text-disp-div"> </div>
+
+    </div>
+    </div>
+        
+    <div class="col-md-3">  </div>
+ 
+ </div> 
+
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+    renderMathInElement(document.body);
+</script>
+
+<script type="text/javascript" src="marked.js"></script>
+<script type="text/javascript" src="writedown.js"></script>
+
+</body>
+</html>

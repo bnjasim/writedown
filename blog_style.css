@@ -1,0 +1,135 @@
+
+a:hover{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+body{
+  font-family:  "Palatino Linotype", garamond, serif; /*georgia*/
+  font-size: 16px;
+  background-color: white; /* #fcfcfc */
+}
+
+
+.navbar-brand {
+  float: left;
+  height: 50px;
+  padding: 15px 0px;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.navbar-brand img {
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	margin-top: -3px;
+}
+
+.content {
+	margin-top: 10px;
+}
+
+#banner {
+	width: 100%;
+	height: 80px;
+	margin: 10px;
+}
+
+#banner img {
+	width: 100%;
+	height: 100%;
+}
+
+.content-heading {
+	font-family: Helvetica;
+	font-size: 36px;
+	opacity: 0.6;
+	margin: 10px 15px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(127,127,127, 0.3);
+}
+
+.content-author {
+    font-family:  "Palatino Linotype", garamond, serif; /*georgia*/
+	width: 100%;
+	min-height: 80px;
+	background-color: #eee;
+	margin-bottom: 20px;
+}
+
+.content-author-details {
+	margin-left: 90px;
+	padding: 10px 0;
+	font-style: italic;
+}
+
+.content-author-name {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.content-author-pic {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	border: 5px solid white;
+	position: absolute;
+	left: 2px;
+	top: -10px;
+}
+
+.img-circle {
+    width: 100%;
+    height: 100%;
+}
+
+.content-details {
+	margin-bottom: 10px;
+	font-size: 11px;
+	font-style: italic;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(127,127,127, 0.3);
+
+}
+
+.content-body {
+	font-family: Open Sans, "Helvetica Neue", Helvetica;
+	min-height: 100px;
+    padding: 10px;
+}
+
+
+.content-body-body h4 {
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+
+.content-plots {
+	text-align: center;
+}
+
+.discuss {
+	margin-top: 20px;
+	padding-top: 10px;
+	border-top: 1px solid rgba(127,127,127, 0.3);
+	margin-bottom: 10px;
+}
+
+.related-articles {
+	margin-top: 30px;
+}
+
+.related-articles-heading {
+	font-family: Helvetica;
+	font-size: 17px;
+	opacity: 0.6;
+	padding-bottom: 3px;
+	border-bottom: 1px solid rgba(127,127,127, 0.3);
+	margin-bottom: 10px;
+}
+
+.related-articles-content {
+	font-size: 14px;
+	font-family:  "Palatino Linotype", garamond, serif; /*georgia*/
+}
