@@ -26,6 +26,8 @@
 }
 
 #textarea-div {
+	resize: none;
+	width: 100%;
     min-height: 240px;
     max-height: 240px;
     padding: 4px 6px 4px 6px;
