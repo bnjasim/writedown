@@ -73,6 +73,9 @@
 }
 
 #textarea-icon-group .btn-group .btn{
+  font-family: 'Times New Roman';
+  font-size: 15px;
+  line-height: 1.2;	
   background-color: #fbfbfb;
   border-radius: 0px;
   border: 1px solid rgba(200,150,200, 0.4);

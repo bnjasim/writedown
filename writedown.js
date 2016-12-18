@@ -46,11 +46,31 @@ icon_group.addEventListener('click', function(event) {
 					tarea.selectionEnd = start + selected_text.length + 2;
 				}
 				break;
+				
 			case 'italic':
-				tarea.value = content.substring(0, start) + '*'+ selected_text + '*' + content.substring(end);
-				tarea.selectionStart = start + 1;
-				tarea.selectionEnd = start + selected_text.length + 1;
+				if (start >=1 && content[start-1]==='*' && content[end]==='*') {
+					tarea.value = content.substring(0, start-1) + selected_text + content.substring(end+1);
+					tarea.selectionStart = start - 1;
+					tarea.selectionEnd = start + selected_text.length - 1;
+				}
+				else {	
+					tarea.value = content.substring(0, start) + '*'+ selected_text + '*' + content.substring(end);
+					tarea.selectionStart = start + 1;
+					tarea.selectionEnd = start + selected_text.length + 1;
+				}
 				break;
+				
+			case 'quote':
+				// Just to make sure that there is exactly one '\n' before and after our quote
+				tarea.value = content.substring(0, start) + (content[start-1]==='\n'?'\n':'\n\n') +
+					'> ' + selected_text + (content[end]==='\n'?'\n':'\n\n') + content.substring(end);
+
+				// Select the text 
+				tarea.selectionStart = start + 3 + (content[start-1]==='\n'?0:1);
+				tarea.selectionEnd = start + selected_text.length + 3 + (content[start-1]==='\n'?0:1);
+				
+				// Check if first character or first after '\n' is '>'
+				
 		}
 		
 		// Finally call the event handler for input change
