@@ -2,9 +2,13 @@ var disp = document.getElementById('text-disp-div');
 var tarea = document.getElementById('textarea-div');
 var icon_group = document.getElementById('textarea-icon-group');
 
-tarea.addEventListener('input', function (evt) {
-    disp.innerHTML = window.marked(tarea.innerText);
+function re_render() {
+	disp.innerHTML = window.marked(tarea.innerText);
     window.renderMathInElement(disp);
+}
+
+tarea.addEventListener('input', function (evt) {
+    re_render();
 });
 
 
@@ -47,6 +51,8 @@ icon_group.addEventListener('click', function(event) {
 		sel.removeAllRanges();
 		sel.addRange(new_range);
 		
+		// Finally call the event handler for input change
+		re_render();
 	}
 })
 
