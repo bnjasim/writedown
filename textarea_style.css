@@ -56,28 +56,28 @@
 }
 
 /* Allows bootstrap class="btn-group" to be properly responsive */
-.textarea-icon-group .btn-group {
+#textarea-icon-group .btn-group {
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 3px;
 }
-.textarea-icon-group .btn-group:last-child {
+#textarea-icon-group .btn-group:last-child {
     margin-right: 0;
 }
 
-.textarea-icon-group{
+#textarea-icon-group{
   background-color: #fbfbfb;
   border-bottom: 2px solid #cccccc;
 }
 
-.textarea-icon-group .btn-group .btn{
+#textarea-icon-group .btn-group .btn{
   background-color: #fbfbfb;
   border-radius: 0px;
   border: 1px solid rgba(200,150,200, 0.4);
   padding: 3px 7px;
   color: #555;
 }
-.textarea-icon-group .btn-group.float-right{
+#textarea-icon-group .btn-group.float-right{
   float: right;
 }
 /* Allows <i class="textarea-div-i-xxx" /> */
