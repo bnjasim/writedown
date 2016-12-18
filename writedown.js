@@ -30,17 +30,18 @@ icon_group.addEventListener('click', function(event) {
 		
 		if (start < end) // something is selected
 			selected_text = content.substring(start, end);
+		 
 				
 		switch(target_node.id) {
 			case 'bold':
 				tarea.value = content.substring(0, start) + '**'+ selected_text + '**' + content.substring(end);
 				tarea.selectionStart = start + 2;
-				tarea.selectionEnd = end + 2;
+				tarea.selectionEnd = start + selected_text.length + 2;
 				break;
 			case 'italic':
 				tarea.value = content.substring(0, start) + '*'+ selected_text + '*' + content.substring(end);
 				tarea.selectionStart = start + 1;
-				tarea.selectionEnd = end + 1;
+				tarea.selectionEnd = start + selected_text.length + 1;
 				break;
 		}
 		
