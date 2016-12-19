@@ -135,8 +135,15 @@ icon_group.addEventListener('click', function(event) {
 				break;
 			
 			case 'link':
-				// If something is selected
-				//selected_text = "www.example.com";
+				//TODO - bootstrap input box for link address
+				var link_addr = window.prompt('Link Address');
+				
+				if (link_addr && link_addr.trim()) {
+					var added_text = (end===0 || content[end-1]==='\n' || content[end-1]===' ' ? '' : ' ') + '[See link](' + link_addr + ')' + (content[end]===' ' ? '' : ' ');
+					tarea.value = content.substring(0, start) + added_text + content.substring(end);
+					tarea.selectionStart = start + added_text.length;
+					tarea.selectionEnd = tarea.selectionStart;
+				}
 				
 				break;
 				
