@@ -151,11 +151,11 @@ icon_group.addEventListener('click', function(event) {
 				if (start === end)
 					selected_text = 'Blockquote';
 				// Just to make sure that there is exactly one '\n' before and after our quote
-				var added_text = (content[start-1]==='\n'?'\n':'\n\n') + '> ' + selected_text + (content[end]==='\n'?'\n':'\n\n');
+				var added_text = (start===0 || content[start-1]==='\n'?'\n':'\n\n') + '> ' + selected_text + (content[end]==='\n'?'\n':'\n\n');
 				tarea.value = content.substring(0, start) + added_text + content.substring(end);
 
 				// Select the text 
-				tarea.selectionStart = start + 3 + (content[start-1]==='\n'?0:1);
+				tarea.selectionStart = start + 3 + (start===0 || content[start-1]==='\n'?0:1);
 				tarea.selectionEnd = tarea.selectionStart + selected_text.length;
 				
 				// No Un-quote at this moment
@@ -172,7 +172,6 @@ icon_group.addEventListener('click', function(event) {
 				break;
 				
 			case 'rule':
-				// Just insert a <br/> tag
 				var linebreak = (content[end-1]==='\n'?'\n':'\n\n') + '-----\n';
 				tarea.value = content.substring(0, end) + linebreak + content.substring(end);
 				// The cursor moves to the end. That should be avoided
@@ -181,6 +180,14 @@ icon_group.addEventListener('click', function(event) {
 				
 				
 				break;
+				
+			case 'code':
+				var padding_text = (end===0 || content[end-1]==='\n'?'\n':'\n\n')  + '    '; // 4 spaces
+				var rem_text = 'code after\n      4 spaces\n';
+				selected_text = padding_text + rem_text;
+				tarea.value = content.substring(0, end) + selected_text + content.substring(end);
+				tarea.selectionStart = end + padding_text.length;
+				tarea.selectionEnd = tarea.selectionStart + rem_text.length;
 				
 		} // End of Switch
 		
