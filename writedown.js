@@ -112,13 +112,14 @@ icon_group.addEventListener('click', function(event) {
 					tarea.selectionStart = start + 2;
 					tarea.selectionEnd = start + selected_text.length + 2;
 				}
+				
 				break;
 				
 			case 'italic':
 				// Un italic - Check if already not bold **
 				//if (start >=1 && content[start-1]==='*' && content[end]==='*' && content.slice(start-2, start)!=='**' && content.slice(end, end+2)!=='**')
 				// Above if checks only for **Text**, but what about ***Text***?
-				// Logic is we need *Text* but not exactly **Text**. Exactly two * is checked by two stars and then not ***Text***
+				// Logic is we need *Text* but not exactly **Text**. Exactly two * is checked by **Text** and then not ***Text***
 				if ( (start >=1 && content[start-1]==='*' && content[end]==='*') && !(start>=2 && content.slice(start-2, start)==='**' && content.slice(end, end+2)==='**' && !(start>=3 && content.slice(start-3, start)==='***' && content.slice(end, end+3)==='***') ))
 				{
 					tarea.value = content.substring(0, start-1) + selected_text + content.substring(end+1);
@@ -130,12 +131,14 @@ icon_group.addEventListener('click', function(event) {
 					tarea.selectionStart = start + 1;
 					tarea.selectionEnd = start + selected_text.length + 1;
 				}
+				
 				break;
 			
 			case 'link':
 				// If something is selected
 				//selected_text = "www.example.com";
 				
+				break;
 				
 			case 'quote':
 				if (start === end)
@@ -149,6 +152,16 @@ icon_group.addEventListener('click', function(event) {
 				tarea.selectionEnd = start + selected_text.length + 3 + (content[start-1]==='\n'?0:1);
 				
 				// No Un-quote at this moment
+				break;
+				
+			case 'br':
+				// Just insert a <br/> tag
+				var linebreak = '<br/>\n';
+				tarea.value = content.substring(0, end) + linebreak + content.substring(end);
+				// The cursor moves to the end. That should be avoided
+				tarea.selectionStart = end + linebreak.length;
+				tarea.selectionEnd = tarea.selectionStart;
+				
 				break;
 				
 		} // End of Switch
