@@ -144,12 +144,12 @@ icon_group.addEventListener('click', function(event) {
 				if (start === end)
 					selected_text = 'Blockquote';
 				// Just to make sure that there is exactly one '\n' before and after our quote
-				tarea.value = content.substring(0, start) + (content[start-1]==='\n'?'\n':'\n\n') +
-					'> ' + selected_text + (content[end]==='\n'?'\n':'\n\n') + content.substring(end);
+				var added_text = (content[start-1]==='\n'?'\n':'\n\n') + '> ' + selected_text + (content[end]==='\n'?'\n':'\n\n');
+				tarea.value = content.substring(0, start) + added_text + content.substring(end);
 
 				// Select the text 
 				tarea.selectionStart = start + 3 + (content[start-1]==='\n'?0:1);
-				tarea.selectionEnd = start + selected_text.length + 3 + (content[start-1]==='\n'?0:1);
+				tarea.selectionEnd = tarea.selectionStart + selected_text.length;
 				
 				// No Un-quote at this moment
 				break;
@@ -161,6 +161,17 @@ icon_group.addEventListener('click', function(event) {
 				// The cursor moves to the end. That should be avoided
 				tarea.selectionStart = end + linebreak.length;
 				tarea.selectionEnd = tarea.selectionStart;
+				
+				break;
+				
+			case 'rule':
+				// Just insert a <br/> tag
+				var linebreak = (content[end-1]==='\n'?'\n':'\n\n') + '-----\n';
+				tarea.value = content.substring(0, end) + linebreak + content.substring(end);
+				// The cursor moves to the end. That should be avoided
+				tarea.selectionStart = end + linebreak.length;
+				tarea.selectionEnd = tarea.selectionStart;
+				
 				
 				break;
 				
