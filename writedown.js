@@ -115,8 +115,12 @@ icon_group.addEventListener('click', function(event) {
 				break;
 				
 			case 'italic':
-				// Un italic - Check if already bold **
-				if (start >=1 && content[start-1]==='*' && content[end]==='*') {
+				// Un italic - Check if already not bold **
+				//if (start >=1 && content[start-1]==='*' && content[end]==='*' && content.slice(start-2, start)!=='**' && content.slice(end, end+2)!=='**')
+				// Above if checks only for **Text**, but what about ***Text***?
+				// Logic is we need *Text* but not exactly **Text**. Exactly two * is checked by two stars and then not ***Text***
+				if ( (start >=1 && content[start-1]==='*' && content[end]==='*') && !(start>=2 && content.slice(start-2, start)==='**' && content.slice(end, end+2)==='**' && !(start>=3 && content.slice(start-3, start)==='***' && content.slice(end, end+3)==='***') ))
+				{
 					tarea.value = content.substring(0, start-1) + selected_text + content.substring(end+1);
 					tarea.selectionStart = start - 1;
 					tarea.selectionEnd = start + selected_text.length - 1;
