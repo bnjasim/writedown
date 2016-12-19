@@ -53,32 +53,34 @@
       <!-- Important that first child is icon-group and second child is text-area -->
       <div id="textarea-icon-group">
         <div class="btn-group">
+			
+			<!-- Warning: The The depth shouldn't be larger than 2. Then the event.target in js will break -->
+			<button class="btn" id="heading" type="button" title="Heading">
+              <b class="textarea-i-h">H</b>
+            </button>
+			
             <button class="btn" id="bold" type="button" title="Bold">
               <b class="textarea-i-bold">B</b>
             </button>
 
             <button class="btn" id="italic" type="button" title="Italic">
-              <i class="textarea-i-italic"><b>I</b></i>
+              <i class="textarea-i-italic">I</i>
             </button>
-
-            <button class="btn" id="quote" type="button" title="Quote">
-              <span class="textarea-i-quote fa fa-quote-left"></span>
-            </button>
-
-            <button class="btn" type="button" title="Strike">
-              <strike class="textarea-i-strike">a</strike>
-            </button>
-
-            <button class="btn" type="button" title="Heading">
-              <span class="textarea-i-h">H</span>
-            </button>
-
-            <button class="btn" type="button" title="Unordered-List">
+			            
+			<button class="btn" type="button" title="Unordered-List">
               <span class="textarea-i-ul fa fa-list-ul"></span>
             </button>
 
             <button class="btn" type="button" title="Ordered-List">
               <span class="textarea-i-ul fa fa-list-ol"></span>
+            </button>
+
+			 <button class="btn" id="link" type="button" title="Link">
+              <span class="textarea-i-link fa fa-link"></span>
+            </button>
+
+            <button class="btn" id="quote" type="button" title="Quote">
+              <span class="textarea-i-quote fa fa-quote-left"></span>
             </button>
 
             <button class="btn" type="button" title="Code">
@@ -97,9 +99,6 @@
               <span class="textarea-i-hrule fa fa-arrows-h"></span>
             </button>
 
-            <button class="btn" type="button" title="Link">
-              <span class="textarea-i-link fa fa-link"></span>
-            </button>
 
         </div>
 
