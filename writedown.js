@@ -85,11 +85,12 @@ icon_group.addEventListener('click', function(event) {
 					}
 				}
 				
-				if (start === pos_lastl || start ===content.length) {
-					// insert placeholder text if no user defined heading after ## 
+				// insert placeholder text if no user defined heading after ##
+				if (start === pos_lastl || start ===content.length) { 
 					var placeholder = 'Heading';
 					count_hash = (count_hash>=6 ? 0 : count_hash+1);
 					tarea.value = content.slice(0, start) + placeholder + content.substring(start);
+					tarea.selectionStart = start;
 					tarea.selectionEnd = start + placeholder.length;
 				}
 				else 
