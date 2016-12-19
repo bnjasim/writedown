@@ -199,7 +199,7 @@ icon_group.addEventListener('click', function(event) {
 				
 				break;
 				
-			case 'code-inline':
+			case 'terminal':
 				if (start === end)
 					selected_text = 'Special';
 				// Remove Back ticks if already added
@@ -214,8 +214,22 @@ icon_group.addEventListener('click', function(event) {
 					tarea.selectionEnd = start + selected_text.length + 1;
 				}
 				
+				break;
+				
 			case 'list0':
 				// bullet list/Unordered list
+				if (start === end) // nothing selected
+						selected_text = 'List Item';
+				
+				// Allow cross lists. That is unordered list as child of an ordered list
+				if (start >= 3 && content.slice(start-3, start).match('[0-9]. ')) {
+					var padding_text = '\n - ';
+					
+					tarea.value = content.substring(0, start) + padding_text + selected_text + content.substring(end);
+					tarea.selectionStart = start + padding_text.length;
+					tarea.selectionEnd = tarea.selectionStart + selected_text.length;
+					break;
+				}
 				
 				// Do we have to un-list? 
 				if (start >= 2 && content.slice(start-2, start)==='- ') {
@@ -225,9 +239,7 @@ icon_group.addEventListener('click', function(event) {
 				}
 				else {	
 					var padding_text = (start===0 || content[start-1]==='\n' ? '' : '\n') + '- ';
-					if (start === end) // nothing selected
-						selected_text = 'List Item';
-
+					
 					tarea.value = content.substring(0, start) + padding_text + selected_text + content.substring(end);
 					tarea.selectionStart = start + padding_text.length;
 					tarea.selectionEnd = tarea.selectionStart + selected_text.length;
@@ -237,6 +249,8 @@ icon_group.addEventListener('click', function(event) {
 				
 			case 'list1':
 				// Ordered list/Numbered list
+				if (start === end) // nothing selected
+						selected_text = 'List Item';
 				
 				// Do we have to un-list? 
 				if (start >= 3 && content.slice(start-3, start).match('[0-9]. ')) {
@@ -246,9 +260,7 @@ icon_group.addEventListener('click', function(event) {
 				}
 				else {	
 					var padding_text = (start===0 || content[start-1]==='\n' ? '' : '\n') + '1. ';
-					if (start === end) // nothing selected
-						selected_text = 'List Item';
-
+					
 					tarea.value = content.substring(0, start) + padding_text + selected_text + content.substring(end);
 					tarea.selectionStart = start + padding_text.length;
 					tarea.selectionEnd = tarea.selectionStart + selected_text.length;
