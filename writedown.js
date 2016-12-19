@@ -148,17 +148,25 @@ icon_group.addEventListener('click', function(event) {
 				break;
 				
 			case 'quote':
-				if (start === end)
-					selected_text = 'Blockquote';
-				// Just to make sure that there is exactly one '\n' before and after our quote
-				var added_text = (start===0 || content[start-1]==='\n'?'\n':'\n\n') + '> ' + selected_text + (content[end]==='\n'?'\n':'\n\n');
-				tarea.value = content.substring(0, start) + added_text + content.substring(end);
+				// Unquote simply if the characters before start are '\n> '
+				if (content.substring(start-3, start) === '\n> ') {
+					tarea.value = content.substring(0, start-3) + content.substring(start);
+					tarea.selectionStart = start - 3;
+					tarea.selectionEnd = end - 3;
+				}
+				else {
+					// Add quote
+					if (start === end)
+						selected_text = 'Blockquote';
+					// Just to make sure that there is exactly one '\n' before and after our quote
+					var added_text = (start===0 || content[start-1]==='\n'?'\n':'\n\n') + '> ' + selected_text + (content[end]==='\n'?'\n':'\n\n');
+					tarea.value = content.substring(0, start) + added_text + content.substring(end);
 
-				// Select the text 
-				tarea.selectionStart = start + 3 + (start===0 || content[start-1]==='\n'?0:1);
-				tarea.selectionEnd = tarea.selectionStart + selected_text.length;
+					// Select the text 
+					tarea.selectionStart = start + 3 + (start===0 || content[start-1]==='\n'?0:1); // +3 is for '> ' and '\n'
+					tarea.selectionEnd = tarea.selectionStart + selected_text.length;
+				}
 				
-				// No Un-quote at this moment
 				break;
 				
 			case 'br':
@@ -178,7 +186,6 @@ icon_group.addEventListener('click', function(event) {
 				tarea.selectionStart = end + linebreak.length;
 				tarea.selectionEnd = tarea.selectionStart;
 				
-				
 				break;
 				
 			case 'code':
@@ -188,6 +195,35 @@ icon_group.addEventListener('click', function(event) {
 				tarea.value = content.substring(0, end) + selected_text + content.substring(end);
 				tarea.selectionStart = end + padding_text.length;
 				tarea.selectionEnd = tarea.selectionStart + rem_text.length;
+				
+				break;
+				
+			case 'code-inline':
+				if (start === end)
+					selected_text = 'Special';
+				// Remove Back ticks if already added
+				if (start >=1 && content[start-1]==='`' && content[end]==='`') {
+					tarea.value = content.substring(0, start-1) + selected_text + content.substring(end+1);
+					tarea.selectionStart = start - 1;
+					tarea.selectionEnd = start + selected_text.length - 1;
+				}
+				else {	
+					tarea.value = content.substring(0, start) + '`'+ selected_text + '`' + content.substring(end);
+					tarea.selectionStart = start + 1;
+					tarea.selectionEnd = start + selected_text.length + 1;
+				}
+				
+			case 'list0':
+				// bullet list/Unordered list
+				
+				break;
+				
+			case 'list1':
+				// Ordered list/Numbered list
+				
+				break;
+				
+		
 				
 		} // End of Switch
 		
