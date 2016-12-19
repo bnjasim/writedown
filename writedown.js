@@ -217,11 +217,43 @@ icon_group.addEventListener('click', function(event) {
 			case 'list0':
 				// bullet list/Unordered list
 				
+				// Do we have to un-list? 
+				if (start >= 2 && content.slice(start-2, start)==='- ') {
+					tarea.value = content.substring(0, start-2) + content.substring(start);
+					tarea.selectionStart = start - 2;
+					tarea.selectionEnd = end - 2;
+				}
+				else {	
+					var padding_text = (start===0 || content[start-1]==='\n' ? '' : '\n') + '- ';
+					if (start === end) // nothing selected
+						selected_text = 'List Item';
+
+					tarea.value = content.substring(0, start) + padding_text + selected_text + content.substring(end);
+					tarea.selectionStart = start + padding_text.length;
+					tarea.selectionEnd = tarea.selectionStart + selected_text.length;
+				}
+				
 				break;
 				
 			case 'list1':
 				// Ordered list/Numbered list
 				
+				// Do we have to un-list? 
+				if (start >= 3 && content.slice(start-3, start).match('[0-9]. ')) {
+					tarea.value = content.substring(0, start-3) + content.substring(start);
+					tarea.selectionStart = start - 3;
+					tarea.selectionEnd = end - 3;
+				}
+				else {	
+					var padding_text = (start===0 || content[start-1]==='\n' ? '' : '\n') + '1. ';
+					if (start === end) // nothing selected
+						selected_text = 'List Item';
+
+					tarea.value = content.substring(0, start) + padding_text + selected_text + content.substring(end);
+					tarea.selectionStart = start + padding_text.length;
+					tarea.selectionEnd = tarea.selectionStart + selected_text.length;
+				}
+								
 				break;
 				
 		
