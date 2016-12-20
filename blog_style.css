@@ -133,3 +133,14 @@ body{
 	font-size: 14px;
 	font-family:  "Palatino Linotype", garamond, serif; /*georgia*/
 }
+
+/* Rewrite bootstrap style for pre and code - esp. red color for code is not good */
+pre {
+    background-color: #f7f7f7;
+	border: 0px;
+}
+
+code {	
+    background-color: #f7f7f7;
+	color: black;
+}
