@@ -1246,7 +1246,7 @@ marked.defaults = {
   sanitize: false,
   sanitizer: null,
   mangle: true,
-  smartLists: false,
+  smartLists: true,
   silent: false,
   highlight: null,
   langPrefix: 'lang-',
