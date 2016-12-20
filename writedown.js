@@ -216,19 +216,20 @@ icon_group.addEventListener('click', function(event) {
 				
 				break;
 				
+			// Bugs in Lists: Two digit numbers will be problematic as match('[0-9]. ') is for only one digit
+			// But we hope this implementation (without complicated regular expressions) will be fine most of the time!
 			case 'list0':
 				// bullet list/Unordered list
 				if (start === end) // nothing selected
 						selected_text = 'List Item';
 				
-				// Allow cross nested lists. That is unordered list as child of an ordered list
+				// Allow nested lists, if start is not at the beginning of List Item.
 				// If start is at the beginning, then change the list type.
 				if (start >= 3 && content.slice(start-3, start).match('[0-9]. ')) {
-					var padding_text = '\n - ';
-					
-					tarea.value = content.substring(0, start) + padding_text + selected_text + content.substring(end);
-					tarea.selectionStart = start + padding_text.length;
-					tarea.selectionEnd = tarea.selectionStart + selected_text.length;
+					var padding_text = '- ';					
+					tarea.value = content.substring(0, start-3) + padding_text + content.substring(start);
+					tarea.selectionStart = start - 1;
+					tarea.selectionEnd = end - 1;
 					break;
 				}
 				
@@ -252,6 +253,16 @@ icon_group.addEventListener('click', function(event) {
 				// Ordered list/Numbered list
 				if (start === end) // nothing selected
 						selected_text = 'List Item';
+				
+				// Allow nested lists, if start is not at the beginning of List Item.
+				// If start is at the beginning, then change the list type.
+				if (start >= 2 && content.slice(start-2, start)==='- ') {
+					var padding_text = '1. ';					
+					tarea.value = content.substring(0, start-2) + padding_text + content.substring(start);
+					tarea.selectionStart = start + 1;
+					tarea.selectionEnd = end + 1;
+					break;
+				}
 				
 				// Do we have to un-list? 
 				if (start >= 3 && content.slice(start-3, start).match('[0-9]. ')) {
