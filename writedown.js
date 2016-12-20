@@ -201,7 +201,7 @@ icon_group.addEventListener('click', function(event) {
 				
 			case 'terminal':
 				if (start === end)
-					selected_text = 'Special';
+					selected_text = '*Verbatim*';
 				// Remove Back ticks if already added
 				if (start >=1 && content[start-1]==='`' && content[end]==='`') {
 					tarea.value = content.substring(0, start-1) + selected_text + content.substring(end+1);
@@ -221,7 +221,8 @@ icon_group.addEventListener('click', function(event) {
 				if (start === end) // nothing selected
 						selected_text = 'List Item';
 				
-				// Allow cross lists. That is unordered list as child of an ordered list
+				// Allow cross nested lists. That is unordered list as child of an ordered list
+				// If start is at the beginning, then change the list type.
 				if (start >= 3 && content.slice(start-3, start).match('[0-9]. ')) {
 					var padding_text = '\n - ';
 					
@@ -231,7 +232,7 @@ icon_group.addEventListener('click', function(event) {
 					break;
 				}
 				
-				// Do we have to un-list? 
+				// Do we have to un-list, if same list type? Un-list only if start is at the beginning. Otherwise nested list 
 				if (start >= 2 && content.slice(start-2, start)==='- ') {
 					tarea.value = content.substring(0, start-2) + content.substring(start);
 					tarea.selectionStart = start - 2;
@@ -268,7 +269,23 @@ icon_group.addEventListener('click', function(event) {
 								
 				break;
 				
+			case 'Math':
+				// Insert $$ $$
+				var latex_text = ' $$ x^2 $$ '; // escaping! 
+				tarea.value = content.substring(0, start) + latex_text + content.substring(end);
+				tarea.selectionStart = start + 4;
+				tarea.selectionEnd = start + latex_text.length - 4;
+				
+				break;
+				
+			case 'math':
+				// Insert '//(' and '//)'
+				var latex_text = '\\\\\( x^2 \\\\\)'; // escaping! 
+				tarea.value = content.substring(0, start) + latex_text + content.substring(end);
+				tarea.selectionStart = start + 4;
+				tarea.selectionEnd = start + latex_text.length - 4;
 		
+				break;
 				
 		} // End of Switch
 		
