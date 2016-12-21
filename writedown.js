@@ -152,6 +152,24 @@ icon_group.addEventListener('click', function(event) {
 				
 				break;
 				
+			case 'image':
+				// If something is selected, set that as the image src. Otherwise use an example image
+				if (start === end) 
+					selected_text = 'gauss.png';
+				
+				var padding_text = (end===0 || content[end-1]==='\n' || content[end-1]===' ' ? '' : ' ') + '![Pic](';
+				var added_text =  padding_text + selected_text + ')' + (content[end]===' ' ? '' : ' ');
+				
+				tarea.value = content.substring(0, start) + added_text + content.substring(end);
+				tarea.selectionStart = start + padding_text.length;
+				tarea.selectionEnd = tarea.selectionStart + selected_text.length;
+
+				
+				break;
+				
+				
+				break;
+				
 			case 'quote':
 				// Unquote simply if the characters before start are '\n> '
 				if (content.substring(start-3, start) === '\n> ') {
