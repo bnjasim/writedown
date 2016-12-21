@@ -137,14 +137,18 @@ icon_group.addEventListener('click', function(event) {
 			
 			case 'link':
 				//TODO - bootstrap input box for link address
-				var link_addr = window.prompt('Link Address');
+				//var link_addr = window.prompt('Link Address');
+				// If something is selected, set that as the link. Otherwise use example.com
+				if (start === end) 
+					selected_text = 'www.example.com';
 				
-				if (link_addr && link_addr.trim()) {
-					var added_text = (end===0 || content[end-1]==='\n' || content[end-1]===' ' ? '' : ' ') + '[See link](' + link_addr + ')' + (content[end]===' ' ? '' : ' ');
-					tarea.value = content.substring(0, start) + added_text + content.substring(end);
-					tarea.selectionStart = start + added_text.length;
-					tarea.selectionEnd = tarea.selectionStart;
-				}
+				var padding_text = (end===0 || content[end-1]==='\n' || content[end-1]===' ' ? '' : ' ') + '[See link](';
+				var added_text =  padding_text + selected_text + ')' + (content[end]===' ' ? '' : ' ');
+				
+				tarea.value = content.substring(0, start) + added_text + content.substring(end);
+				tarea.selectionStart = start + padding_text.length;
+				tarea.selectionEnd = tarea.selectionStart + selected_text.length;
+
 				
 				break;
 				
