@@ -298,6 +298,16 @@ icon_group.addEventListener('click', function(event) {
 		
 				break;
 				
+			case 'table':
+				
+				var padding_text = '\nColumn1';
+				var table_text = padding_text + ' | Column2\n:-----:|:--------:|\n1 | 2\n3 | 4\n';
+				tarea.value = content.substring(0, start) + table_text + content.substring(end);
+				tarea.selectionStart = start + 1;
+				tarea.selectionEnd = start + padding_text.length;
+				
+				break;
+				
 		} // End of Switch
 		
 		
