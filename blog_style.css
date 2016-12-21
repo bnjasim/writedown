@@ -94,7 +94,7 @@ body{
 }
 
 .content-body {
-	font-family: Open Sans, "Helvetica Neue", Helvetica;
+	font-family: "Helvetica Neue", Helvetica, Arial;
 	min-height: 100px;
     padding: 10px;
 }
