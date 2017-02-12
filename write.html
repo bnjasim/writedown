@@ -134,6 +134,22 @@
 
       <div class="clearfix"></div>
 
+      <!-- an area to input the data:url of the cropped image -->
+      <div id="draw-area">
+        
+        <button type="button" class="close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span> <!-- screen reader only. Irony -->
+        </button>
+
+        Data URL: <input id="draw-url-input"></input>
+
+        <button id="data-url-btn" type="button" class="btn btn-xs">OK</button>
+
+        <span>Use <a href="http://cslab.org/browpad" target="_blank">browpad</a> to draw. Crop <span class="textarea-i-align fa fa-crop" style="width: 12px;"></span> and paste here! </span>
+
+      </div>
+
       <textarea id="textarea-div"></textarea>
 
       <div id="text-disp-div" class="markdown-body"> </div>
@@ -149,8 +165,6 @@
 </div>
 </div>
 </div>
-
-
 
     
 <script type="text/javascript" src="katex/katex.min.js"></script>
