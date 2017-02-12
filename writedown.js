@@ -334,9 +334,15 @@ icon_group.addEventListener('click', function(event) {
 				break;
 				
 			case 'draw':
-				// Show the draw-area
-				draw_area.classList.remove("disabled");
-				draw_input_area.focus();
+				// Hide the draw-area if already shown
+				if (!draw_area.classList.contains("disabled")) {
+					draw_area.classList.add('disabled');
+				}
+				else {
+					draw_area.classList.remove('disabled');
+					draw_input_area.focus();
+					
+				}
 				
 				
 				
@@ -356,9 +362,19 @@ icon_group.addEventListener('click', function(event) {
 
 
 document.getElementById('draw-close').addEventListener('click', function(event) {
-	// Simply close the draw-area
+	// Simply hide the draw-area
 	draw_area.classList.add('disabled');
 });
+
+
+document.getElementById('data-url-btn').addEventListener('click', function() {
+	// get the input and check if it starts with data:image/png;base64
+	var im_data = draw_input_area.value;
+	console.log(im_data);
+	// Hide the draw-area
+	draw_area.classList.add('disabled');
+});
+
 
 
 
