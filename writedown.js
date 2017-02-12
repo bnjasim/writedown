@@ -226,7 +226,7 @@ icon_group.addEventListener('click', function(event) {
 				
 			case 'terminal':
 				if (start === end)
-					selected_text = '*Verbatim*';
+					selected_text = 'Verbatim';
 				// Remove Back ticks if already added
 				if (start >=1 && content[start-1]==='`' && content[end]==='`') {
 					tarea.value = content.substring(0, start-1) + selected_text + content.substring(end+1);
@@ -340,9 +340,12 @@ icon_group.addEventListener('click', function(event) {
 				}
 				else {
 					draw_area.classList.remove('disabled');
-					draw_input_area.focus();
-					
+					// clear the input text field of previous values
+					draw_input_area.value = '';
+					draw_input_area.focus();	
 				}
+				
+				break;
 				
 				
 				
@@ -355,7 +358,7 @@ icon_group.addEventListener('click', function(event) {
 	} // End of if (target.id)
 	
 	else {
-		console.log('Oops!');
+		console.log('Oops! ID not found');
 		console.log(target_node);
 	}
 }); // End // Button click handlers
@@ -366,13 +369,30 @@ document.getElementById('draw-close').addEventListener('click', function(event) 
 	draw_area.classList.add('disabled');
 });
 
+// keep track of how many drawings inserted
+var count_drawing = 1;
 
 document.getElementById('data-url-btn').addEventListener('click', function() {
 	// get the input and check if it starts with data:image/png;base64
-	var im_data = draw_input_area.value;
-	console.log(im_data);
+	var im_data = draw_input_area.value.trim();
 	// Hide the draw-area
 	draw_area.classList.add('disabled');
+	
+	// Insert the image. Keep track of count as paint1, paint2 etc.
+	tarea.focus();
+	var content = tarea.value;
+	var start = tarea.selectionStart;
+	var end = tarea.selectionEnd;
+	var insert_text1 = (end===0 || content[end-1]==='\n'?'':' ') + '![Drawing' + count_drawing + '][paint' + count_drawing + ']\n';
+	var insert_text2 = '\n\n[paint' + count_drawing + ']:'+im_data;
+	tarea.value = content.substring(0, start) + insert_text1 + content.substring(end) + insert_text2;
+	tarea.selectionStart = end + insert_text1.length;
+	tarea.selectionEnd = tarea.selectionStart;
+	
+	count_drawing += 1;
+	
+	// Call the event handler for input change
+	re_render();
 });
 
 
