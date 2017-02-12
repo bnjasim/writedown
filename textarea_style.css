@@ -31,7 +31,7 @@
 	line-height: 2;
 }
 
-#draw-url-input {
+#draw-input-area {
    margin-right: 5px;
    height: 22px;
    width: 200px;
@@ -84,6 +84,15 @@
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+
+
+#draw-input-area:focus, #draw-input-area:focus:active, #draw-input-area:active  {
+	outline: 0;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
 }
 
 /* Allows bootstrap class="btn-group" to be properly responsive */

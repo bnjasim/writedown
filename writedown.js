@@ -2,6 +2,7 @@ var disp = document.getElementById('text-disp-div');
 var tarea = document.getElementById('textarea-div');
 var icon_group = document.getElementById('textarea-icon-group');
 var draw_area = document.getElementById('draw-area');
+var draw_input_area = document.getElementById('draw-input-area');
 
 function re_render() {
 	disp.innerHTML = window.marked(tarea.value);
@@ -335,6 +336,8 @@ icon_group.addEventListener('click', function(event) {
 			case 'draw':
 				// Show the draw-area
 				draw_area.classList.remove("disabled");
+				draw_input_area.focus();
+				
 				
 				
 		} // End of Switch
