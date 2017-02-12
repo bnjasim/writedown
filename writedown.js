@@ -17,8 +17,9 @@ icon_group.addEventListener('click', function(event) {
     // we care about two targets. Either on the button or on the span inside button
     // Otherwise we don't take any action
     var target_node = event.target; 
-    if (target_node.tagName !== 'BUTTON') 
+    if (target_node.tagName !== 'BUTTON') {
         target_node = target_node.parentElement;
+	}
     
     if (target_node.id) { // insert markdown only for valid buttons with an id
 		
@@ -142,7 +143,7 @@ icon_group.addEventListener('click', function(event) {
 				if (start === end) 
 					selected_text = 'www.example.com';
 				
-				var padding_text = (end===0 || content[end-1]==='\n' || content[end-1]===' ' ? '' : ' ') + '[See link](';
+				var padding_text = (end===0 || content[end-1]==='\n' || content[end-1]===' ' ? '' : ' ') + '[here](';
 				var added_text =  padding_text + selected_text + ')' + (content[end]===' ' ? '' : ' ');
 				
 				tarea.value = content.substring(0, start) + added_text + content.substring(end);
@@ -155,9 +156,9 @@ icon_group.addEventListener('click', function(event) {
 			case 'image':
 				// If something is selected, set that as the image src. Otherwise use an example image
 				if (start === end) 
-					selected_text = 'gauss.png';
+					selected_text = 'http://media02.hongkiat.com/ww-flower-wallpapers/roundflower.jpg';
 				
-				var padding_text = (end===0 || content[end-1]==='\n' || content[end-1]===' ' ? '' : ' ') + '![Pic](';
+				var padding_text = (end===0 || content[end-1]==='\n' || content[end-1]===' ' ? '' : ' ') + '![Image](';
 				var added_text =  padding_text + selected_text + ')' + (content[end]===' ' ? '' : ' ');
 				
 				tarea.value = content.substring(0, start) + added_text + content.substring(end);
@@ -340,7 +341,7 @@ icon_group.addEventListener('click', function(event) {
 	
 	else {
 		console.log('Oops!');
-		console.log(event.target);
+		console.log(target_node);
 	}
 })
 
