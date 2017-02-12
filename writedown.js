@@ -1,6 +1,7 @@
 var disp = document.getElementById('text-disp-div');
 var tarea = document.getElementById('textarea-div');
 var icon_group = document.getElementById('textarea-icon-group');
+var draw_area = document.getElementById('draw-area');
 
 function re_render() {
 	disp.innerHTML = window.marked(tarea.value);
@@ -331,6 +332,11 @@ icon_group.addEventListener('click', function(event) {
 				
 				break;
 				
+			case 'draw':
+				// Show the draw-area
+				draw_area.classList.remove("disabled");
+				
+				
 		} // End of Switch
 		
 		
@@ -343,7 +349,13 @@ icon_group.addEventListener('click', function(event) {
 		console.log('Oops!');
 		console.log(target_node);
 	}
-})
+}); // End // Button click handlers
+
+
+document.getElementById('draw-close').addEventListener('click', function(event) {
+	// Simply close the draw-area
+	draw_area.classList.add('disabled');
+});
 
 
 

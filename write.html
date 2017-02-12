@@ -119,7 +119,7 @@
               <span class="textarea-i-align fa fa-table"></span>
             </button>
 			
-			<button class="btn" type="button" title="Paint">
+			<button class="btn" id="draw" type="button" title="Paint">
               <div class="textarea-i-square" data-toggle="modal" data-target="#myModalHorizontal" style="width:30px;margin-top:-1px">Draw</div>
             </button>
 			
@@ -135,9 +135,9 @@
       <div class="clearfix"></div>
 
       <!-- an area to input the data:url of the cropped image -->
-      <div id="draw-area">
+      <div id="draw-area" class="disabled">
         
-        <button type="button" class="close">
+        <button id="draw-close" type="button" class="close">
           <span aria-hidden="true">&times;</span>
           <span class="sr-only">Close</span> <!-- screen reader only. Irony -->
         </button>
