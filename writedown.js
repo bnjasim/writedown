@@ -1,3 +1,6 @@
+// TODO
+// 1. Table align-center
+
 var disp = document.getElementById('text-disp-div');
 var tarea = document.getElementById('textarea-div');
 var icon_group = document.getElementById('textarea-icon-group');
@@ -6,6 +9,7 @@ var draw_input_area = document.getElementById('draw-input-area');
 
 function re_render() {
 	disp.innerHTML = window.marked(tarea.value);
+	// console.log(disp.innerHTML)
     window.renderMathInElement(disp);
 }
 

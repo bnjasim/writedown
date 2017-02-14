@@ -48,6 +48,18 @@
 	display: none;
 }
 
+#clipboard-div {
+	position: relative;
+	width: 100%;
+	font-size: 11px;
+}
+
+#clipboard-btn {
+	position: absolute;
+	top: 5px;
+	right: 0;
+}
+
 #text-disp-div {
     margin-top: 10px;
     padding: 4px 6px 4px 6px;
