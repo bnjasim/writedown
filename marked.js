@@ -457,6 +457,7 @@ var inline = {
   nolink: /^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,
   strong: /^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,
   em: /^\b_((?:[^_]|__)+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+  center: /^\<\<([\s\S]+?)\>\>/,
   code: /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
   br: /^ {2,}\n(?!\s*$)/,
   del: noop,
@@ -657,6 +658,13 @@ InlineLexer.prototype.output = function(src) {
       out += this.renderer.em(this.output(cap[2] || cap[1]));
       continue;
     }
+	
+	// center
+    if (cap = this.rules.center.exec(src)) {
+      src = src.substring(cap[0].length);
+      out += this.renderer.center(this.output(cap[2] || cap[1]));
+      continue;
+    }
 
     // code
     if (cap = this.rules.code.exec(src)) {
@@ -854,6 +862,10 @@ Renderer.prototype.em = function(text) {
   return '<em>' + text + '</em>';
 };
 
+Renderer.prototype.center = function(text) {
+  return '<div style="text-align:center;">' + text + '</div>';
+};
+	
 Renderer.prototype.codespan = function(text) {
   return '<code>' + text + '</code>';
 };
