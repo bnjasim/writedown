@@ -137,6 +137,21 @@ icon_group.addEventListener('click', function(event) {
 				}
 				
 				break;
+				
+			case 'center':
+				// Check to un-center
+				if (start >=2 && content.slice(start-2, start)==='<<' && content.slice(end, end+2)==='>>') {
+					tarea.value = content.substring(0, start-2) + selected_text + content.substring(end+2);
+					tarea.selectionStart = start - 2;
+					tarea.selectionEnd = start + selected_text.length - 2;
+				}
+				else {	
+					tarea.value = content.substring(0, start) + '<<'+ selected_text + '>>' + content.substring(end);
+					tarea.selectionStart = start + 2;
+					tarea.selectionEnd = start + selected_text.length + 2;
+				}
+				
+				break;	
 			
 			case 'link':
 				//TODO - bootstrap input box for link address
