@@ -6,6 +6,7 @@ var tarea = document.getElementById('textarea-div');
 var icon_group = document.getElementById('textarea-icon-group');
 var draw_area = document.getElementById('draw-area');
 var draw_input_area = document.getElementById('draw-input-area');
+var copy_clipboard_btn = document.getElementById('clipboard-btn')
 
 function re_render() {
 	disp.innerHTML = window.marked(tarea.value);
@@ -428,7 +429,7 @@ draw_input_area.addEventListener("keyup", function(event) {
 
 var clipboard_textarea = document.getElementById('clip-text-area');
 // To Copy to the clipboard
-document.getElementById('clipboard-btn').addEventListener('click', function() {
+copy_clipboard_btn.addEventListener('click', function() {
 	// Copy the innerHTML in the disp-div to the clipboard
 	// Create a textarea and set its contents to the text you want copied to the clipboard.
 	// Append the textarea to the DOM.
@@ -444,6 +445,13 @@ document.getElementById('clipboard-btn').addEventListener('click', function() {
 	document.body.removeChild(clipboard_textarea);
 	
 	// alert user that copied
+	copy_clipboard_btn.innerText = 'Copied';
+	copy_clipboard_btn.style.color = 'green';
+	
+	setTimeout(function() {
+		copy_clipboard_btn.innerText = 'Copy HTML to Clipboard';
+		copy_clipboard_btn.style.color = 'black';
+	}, 500)
 	
 	
 });
