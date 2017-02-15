@@ -426,5 +426,25 @@ draw_input_area.addEventListener("keyup", function(event) {
     }
 });
 
-
+var clipboard_textarea = document.getElementById('clip-text-area');
+// To Copy to the clipboard
+document.getElementById('clipboard-btn').addEventListener('click', function() {
+	// Copy the innerHTML in the disp-div to the clipboard
+	// Create a textarea and set its contents to the text you want copied to the clipboard.
+	// Append the textarea to the DOM.
+	// Select the text in the textarea.
+	// Call document.execCommand("copy")
+	// Remove the textarea from the dom.
+	var clipboard_textarea = document.createElement('textarea');
+	clipboard_textarea.id = 'clip-text-area';
+	document.body.appendChild(clipboard_textarea);
+	clipboard_textarea.value = disp.innerHTML;
+	clipboard_textarea.select();
+	document.execCommand('copy');
+	document.body.removeChild(clipboard_textarea);
+	
+	// alert user that copied
+	
+	
+});
 
