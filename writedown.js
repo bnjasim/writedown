@@ -9,7 +9,7 @@ var draw_input_area = document.getElementById('draw-input-area');
 var copy_clipboard_btn = document.getElementById('clipboard-btn')
 
 function re_render() {
-	disp.innerHTML = window.marked(tarea.value);
+	disp.innerHTML = window.marked.parse(tarea.value);
 	// console.log(disp.innerHTML)
     window.renderMathInElement(disp);
 }
